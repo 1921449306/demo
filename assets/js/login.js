@@ -46,6 +46,7 @@ $(function () {
       url: "/api/login",
       data,
       success: function (res) {
+        console.log(res);
         if (res.status !== 0) {
           return layer.msg("注册失败");
         }
