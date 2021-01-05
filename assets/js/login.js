@@ -19,9 +19,7 @@ $(function () {
       }
     },
   });
-  $.ajaxPrefilter(function (options) {
-    options.url = "http://ajax.frontend.itheima.net" + options.url;
-  });
+
   $("#regiForm").on("submit", function (e) {
     e.preventDefault();
     let data = $(this).serialize();
@@ -51,6 +49,8 @@ $(function () {
         if (res.status !== 0) {
           return layer.msg("注册失败");
         }
+        // 存储token
+        localStorage.setItem("token", res.token);
         layer.msg("登录成功, 即将跳转到首页", function () {
           location.href = "/home/index.html";
         });
